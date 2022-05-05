@@ -19,9 +19,9 @@ class Kendaraan{
     this.posisi = createVector(x,y);
     this.kecepatan = createVector(1,0);
     this.percepatan = createVector(0,0);
-    this.l = 20;
+    this.l = 30;
     this.maxspeed = 2;
-    this.maxforce = 0.1;
+    this.maxforce = 0.01;
     this.terbangTheta = PI/2;
   }
   
@@ -30,12 +30,31 @@ class Kendaraan{
     projVector.setMag(100);
     let projPoint = projVector.add(this.posisi);
     
-    let terbangRadius = 50;
+    let terbangRadius = 20;
     let theta = this.terbangTheta + this.kecepatan.heading();
     let xBar = terbangRadius * cos(theta);
     let yBar = terbangRadius * sin(theta);
     
     let terbangPoint = p5.Vector.add(projPoint, createVector(xBar,yBar));
+    let debug = true;
+    
+    if (debug){
+      push()
+      fill(150, 75, 0);
+      stroke('red')
+      line(this.posisi.x, this.posisi.y, projPoint.x, projPoint.y)
+      stroke('red');
+      circle(projPoint.x, projPoint.y, 8);
+      noFill();
+      stroke('red');
+      circle(projPoint.x, projPoint.y, terbangRadius*2);
+      
+      line(this.posisi.x, this.posisi.y, terbangPoint.x, terbangPoint.y)
+      stroke('black')
+      fill('yellow')
+      circle(terbangPoint.x, terbangPoint.y, 10);
+      pop()
+    }
   
     
     let mengemudiForce = terbangPoint.sub(this.posisi);
@@ -98,54 +117,54 @@ class Kendaraan{
     strokeWeight(0.5)
     stroke(0);
     fill(255, 128, 0);
-    rect(40, 155, 70, 20,  radians(500), radians(180))
-    rect(43, 162, 5, 13)
+    rect(-55, -20, 70, 20,  radians(0), radians(280))
+    rect(6, -13, 5, 13)
 
     //spion
     fill(255);
-    line(35, 159, 42, 158)
-    rect(35, 159, 1, 3, radians(200))
+    line(16, -17, 23, -16)
+    rect(23, -16, 1, 3, radians(200))
 
     //jendela
     fill(51, 255, 153);
-    arc(43, 157, 23, 20, radians(0), radians(90))
-    rect(43, 157, 5, 5, radians(290), radians(0))
-    rect(48, 157, 5, 5)
-    rect(53, 157, 5, 5)
-    rect(58, 157, 5, 5)
+    arc(10, -18, 23, 20, radians(90), radians(180))
+    rect(5, -18, 5, 5)
+    rect(-0, -18, 5, 5)
+    rect(-5,-18, 5, 5)
+    rect(-10,-18, 5, 5)
     //pintu
     fill(255);
-    rect(63, 157, 10, 13)
-    rect(64, 158, 8, 11)
-    line(68, 170, 68, 157)
+    rect(-20, -18, 10, 13)
+    rect(-19,-17, 8, 11)
+    line(-15, -5, -15, -18)
     fill(255, 128, 0);
-    rect(67, 153,20, 2, radians(30), radians(30)) 
+    rect(-30, -22,20, 2, radians(30), radians(30)) 
     //jendela
     fill(51, 255, 153);
-    rect(73, 157, 5, 5)
-    rect(78, 157, 5, 5)
-    rect(83, 157, 5, 5)
-    rect(88, 157, 5, 5)
-    rect(93, 157, 5, 5)
-    rect(98, 157, 5, 5)
-    rect(103, 157, 5, 5, radians(0), radians(20))
+    rect(-25, -18, 5, 5)
+    rect(-30,-18, 5, 5)
+    rect(-35,-18, 5, 5)
+    rect(-40, -18, 5, 5)
+    rect(-45,-18, 5, 5)
+    rect(-50,-18, 5, 5)
+    rect(-55,-18, 5, 5)
 
-    //acc
+    //ac
     fill(255);
-    rect(100, 168, 5, 6)
-    line(104, 169, 101, 169)
-    line(104, 170, 101, 170)
-    line(104, 171, 101, 171)
-    line(104, 172, 101, 172)
-    line(104, 173, 101, 173)
+    rect(-52, -7, 5, 6)
+    line(-48, -6, -51, -6)
+    line(-48, -5, -51, -5)
+    line(-48, -4, -51, -4)
+    line(-48, -3, -51, -3)
+    line(-48, -2, -51, -2)
 
     //ban
     strokeWeight(2)
     fill(255);
-    ellipse(55, 175, 7, 7)
-    point(55, 175)
-    ellipse(90, 175, 7, 7)
-    point(90, 175)
+    ellipse(0, 0, 7, 7)
+    point(0, 0)
+    ellipse(-35, 0, 7, 7)
+    point(-35, 0)
     pop();
   }
 
